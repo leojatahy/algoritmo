@@ -1,94 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Operadores e comandos de Entrada</title>
-   <style>
-    body {
-        max-width: 200px;
-        margin: 0 auto;
-        padding: 20px;
-        text-align: center;
-    }
-</style>
+    <title>Soma de valores</title>
 </head>
 <body>
-<h1>Calculadora</h1>
-<input type="text" id="resultado" readonly>
-<table>
-    <tr>
-        <td><button onclick="adicionarNumero(1)">1</button></td>
-        <td><button onclick="adicionarNumero(2)">2</button></td>
-        <td><button onclick="adicionarNumero(3)">3</button></td>
-        <td><button onclick="adicionarOperacao('+')">+</button></td>
-    </tr>
-    <tr>
-        <td><button onclick="adicionarNumero(4)">4</button></td>
-        <td><button onclick="adicionarNumero(5)">5</button></td>
-        <td><button onclick="adicionarNumero(6)">6</button></td>
-        <td><button onclick="adicionarOperacao('-')">-</button></td>
-    </tr>
-    <tr>
-        <td><button onclick="adicionarNumero(7)">7</button></td>
-        <td><button onclick="adicionarNumero(8)">8</button></td>
-        <td><button onclick="adicionarNumero(9)">9</button></td>
-        <td><button onclick="adicionarOperacao('*')">*</button></td>
-    </tr>
-    <tr>
-        <td><button onclick="adicionarNumero(0)">0</button></td>
-        <td><button onclick="adicionarOperacao('/')">/</button></td>
-        <td><button onclick="calcularResultado()">=</button></td>
-        <td><button onclick="limpar()">C</button></td>
-    </tr>
-</table>
+    <label for="numero">Numero:</label>
+    <input type="number"  id="n1">
+    <input type="number"  id="n2">
+    <input type="button" value="SOMAR" onclick="soma()">
+    <div id="res">
 
-<script>
-    let numeros = [];
-    let operacoes = [];
-
-    function adicionarNumero(numero) {
-        document.getElementById('resultado').value += numero;
-    }
-
-    function adicionarOperacao(operacao) {
-        numeros.push(parseFloat(document.getElementById('resultado').value));
-        operacoes.push(operacao);
-        document.getElementById('resultado').value = '';
-    }
-
-    function calcularResultado() {
-        numeros.push(parseFloat(document.getElementById('resultado').value));
-
-        let resultado = numeros[0];
-        for (let i = 0; i < operacoes.length; i++) {
-            switch (operacoes[i]) {
-                case '+':
-                    resultado += numeros[i + 1];
-                    break;
-                case '-':
-                    resultado -= numeros[i + 1];
-                    break;
-                case '*':
-                    resultado *= numeros[i + 1];
-                    break;
-                case '/':
-                    resultado /= numeros[i + 1];
-                    break;
+    </div>
+    <script>
+        function soma(){
+            var n1 = document.querySelector('#n1')
+            var n2 = document.querySelector('#n2')
+            var res = document.querySelector('#res') 
+            if(n1.value.length == 0 || n2.value.length == 0){
+                window.alert (`ERRO número invalido`)
+            }else {
+            var nume1= Number(n1.value)
+            var nume2= Number(n2.value)
+            var resul = (nume1 + nume2) / 2
+            res.innerHTML = `A soma entre ${nume1} é ${nume2} é igual a ${resul}`
             }
+            
         }
-
-        document.getElementById('resultado').value = resultado;
-        numeros = [];
-        operacoes = [];
-    }
-
-    function limpar() {
-        document.getElementById('resultado').value = '';
-        numeros = [];
-        operacoes = [];
-    }
-</script>
+    </script>
 </body>
 </html>
