@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Converter Temperatura Creusa</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Converter Temperatura</h1>
+    <label for="temp">Temperatura em fahrenheit:</label>
+    <input type="number" name="temp" id="temp"><input type="button" value="Converter" onclick="calcular()">
+    <div id="res"></div>
+    <script>
+        function calcular(){
+            var temp = document.querySelector('#temp')
+            var res = document.querySelector('#res')
+            if(temp.value.length == 0) {
+                window.alert('[ERRO] Coloque um numero')
+            }else{ 
+                var F = Number(temp.value)
+                var c = (F-32) / 1.8
+                res.innerText = (`A Temperatura em Celsius ${c}°C`)
+            }
+            
+        }
+    </script>
+</body>
+</html>

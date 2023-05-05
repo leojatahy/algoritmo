@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Taxar as compras da Creusa</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <h1>Imposto da Creusa</h1>
+    <label for="valor">VALOR DE PRODUTO:</label>
+    <input type="number" name="valor" id="valor" placeholder="em Dólar"><input type="button" value="calcular" onclick="calcular()">
+    <div id="res"></div>
+    <script>
+        function calcular(){
+            var valor = document.querySelector('#valor')
+            var res = document.querySelector('#res')
+            var preco = Number(valor.value)
+            if(valor.value.length == 0){
+                window.alert('[ERRO] Para calcular o valor do Imposto coloque um valor')
+            }else{
+                var calc = preco*60 / 100
+                res.innerText = `A taxa referente ao valor do produto e de US$${calc}`
+            }
+
+        }
+    </script>
+</body>
+</html>
