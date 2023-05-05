@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Empréstimo da Creusa</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 1.3em;
+        }
+    </style>
+</head>
+<body>
+    <h1>Empréstimo</h1>
+    <label for="empre">Valor do Empréstimo:</label><br>
+    <input type="number" id="empre"><br>
+
+    <label for="parcela">Parcelas:</label><br>
+    <input type="number" name="parcela" id="parcela">
+
+    <input type="button" value="calcular" onclick="calcular()">
+    <div id="resu"></div>
+
+    <script>
+        function calcular(){
+            var empre = document.querySelector('#empre')
+            var parce = document.querySelector('#parcela')
+            var res = document.querySelector('#resu')           
+            if(empre.value.length == 0 || parce.value.length == 0){
+                window.alert('[ERRO] numero invalido')
+            }else{
+                var parcela = Number(parce.value)
+                var valor = Number(empre.value)
+                var calc = ((valor*20/100)+valor)/parcela
+                
+                res.innerText = `Creusa ira pagar ${parcela} parcelas de R$${calc}`
+            }
+        }
+    </script>
+</body>
+</html>
